@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Weather Website</title>
 </head>
 <body>
@@ -11,14 +11,34 @@
         <h1>Weather Forecast</h1>
     </header>
     <main>
-        <div class="weather-card">
-            <h2>Today's Weather</h2>
-            <p>Temperature: 25°C</p>
-            <p>Condition: Sunny</p>
+        <div class="search-container">
+            <input type="text" id="locationInput" placeholder="Enter a location">
+            <button onclick="searchWeather()">Search</button>
         </div>
-    </main>
+        <div class="weather-card" id="weatherCard">
+            <h2>Today's Weather</h2>
+            <p id="temperature">Temperature: </p>
+            <p id="condition">Condition: </p>
+        </div>
+    </main>    
     <footer>
         <p>&copy; 2023 Weather Website</p>
     </footer>
+<script>
+ const apiKey='843155317cbdb9b717d5680b629564e3';
+ const apiUrl= 'https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}';   
+ async function searchWeather(){
+     const locationInput = document.getElementById('locationInput');
+     const location = locationInput.value;
+     const url = apiUrl + location + '&appid=' + apiKey;
+     const response = await fetch(url);
+     const data = await response.json();
+     console.log(data);
+     const temperature = data.main.temp;
+     const condition = data.weather[0].description;
+     document.getElementById('temperature').innerHTML = 'Temperature: ' + temperature;
+     document.getElementById('condition').innerHTML = 'Condition: ' + condition;
+ }
+</script>
 </body>
 </html>
