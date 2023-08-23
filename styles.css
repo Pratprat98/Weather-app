@@ -13,6 +13,11 @@ header, footer {
 
 main {
     padding: 20px;
+    height: 100vw;
+}
+
+.hero{
+    margin-top: 250px;
 }
 
 .weather-card {
