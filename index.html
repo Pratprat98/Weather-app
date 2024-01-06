@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
     <title>Weather Website</title>
+
 </head>
+
 <body>
     <header>
         <h1>Weather Forecast</h1>
     </header>
     <main class="main">
-        <div class="hero">
-        <div class="search-container">
-            <input type="text" id="locationInput" placeholder="Enter a location">
-            <button type="submit" onclick="searchWeather()">Search</button>
+        <div class="hero" id="hero">
+            <div class="search-container">
+                <input type="text" id="locationInput" placeholder="Enter a location">
+                <button type="button" onclick="searchWeather()">Search</button>
+            </div>
+            <div class="weather-card" id="weatherCard">
+                <h2>Today's Weather</h2>
+                <p id="temperature">Temperature: </p>
+                <p id="condition">Condition: </p>
+            </div>
         </div>
-        <div class="weather-card" id="weatherCard">
-            <h2>Today's Weather</h2>
-            <p id="temperature">Temperature: </p>
-            <p id="condition">Condition: </p>
-        </div>
-    </div>
-    </main>    
+    </main>
     <footer>
         <p>&copy; 2023 Weather Website</p>
     </footer>
     <script src="index.js"></script>
 </body>
+
 </html>
