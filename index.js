@@ -19,9 +19,19 @@ async function searchWeather() {
         }
         const data = await response.json();
         const temperature = Math.round(data.main.temp - 273.15) + "&deg;" + 'C';
+        const feelsLike = Math.round(data.main.feels_like - 273.15) + "&deg;" + 'C';
+        const maxTemp = Math.round(data.main.temp_max - 273.15) + "&deg;" + 'C';
+        const minTemp = Math.round(data.main.temp_min - 273.15) + "&deg;" + 'C';
+        const visibility = data.visibility / 1000 + ' km';
+        const windSpeed = data.wind.speed + ' m/s';
         const condition = data.weather[0].description;
         document.getElementById('temperature').innerHTML = 'Temperature: ' + temperature;
+        document.getElementById('feelsLike').innerHTML = 'Feels Like: ' + feelsLike;
+        document.getElementById('maxTemp').innerHTML = 'Max Temp: ' + maxTemp;
+        document.getElementById('minTemp').innerHTML = 'Min Temp: ' + minTemp;
         document.getElementById('condition').innerHTML = 'Condition: ' + condition;
+        document.getElementById('visibility').innerHTML = 'Visibility: ' + visibility;
+        document.getElementById('windSpeed').innerHTML = 'Wind Speed: ' + windSpeed;
         document.getElementById('weatherCard').style.display = 'block';
         document.getElementById('hero').style.backgroundImage = "url('path/to/your-background-image.jpg')";
     } catch (error) {
